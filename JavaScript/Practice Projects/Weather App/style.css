@@ -1,0 +1,124 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+    box-sizing: border-box;
+    justify-items: center;
+    align-items: center;
+}
+body {
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: black;
+}
+.all{
+    width: 50%;
+    height: 50%;
+    margin-left:25%;
+    margin-top: 5%;
+    background-image: url("Images/background.jfif");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.search-box{
+    display: flex;
+    align-self: center;
+    margin-top: 25%;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg,#00feba,#5b548a);
+    border-radius: 40px;
+    width: 60%;
+    margin-left: 20%;
+}
+.inputs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.inputs input {
+    padding: 2px;
+    margin-left: 10px;
+    border-radius: 9px;
+    width: 75%;
+    font-size: 16px;
+    margin-right: 5px;
+}
+.inputs button:hover{
+    cursor: pointer;
+    border: 1px outset ;
+    transition: .2s;
+}
+.search{
+    border-radius:10px;
+}
+.inputs button img{
+    width: 25px;
+    height: 25px;
+    border-radius:10px;
+}
+.unit{
+    font-size:18px;
+    margin-left: 10px;
+    border-radius:10px;
+    width: 40px;
+    height: 30px;
+    margin-right: 10px;
+}
+.reset{
+    color:yellow;
+    font-size:18px;
+    border-radius:10px;
+    width: 80px;
+    height: 30px;
+    margin-right: 10px;
+    background: gray;
+}
+.reset:hover{
+    background: cyan;
+    cursor: pointer;
+    border: 1px outset black;
+    transition: .2s;
+}
+
+.info{
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg,#00feba,#5b548a);
+    border-radius: 40px;
+    margin-top: 10%;
+    margin-bottom: 25%;
+    margin-right: 25%;
+    margin-left: 25%;
+    height: 500px;
+}
+h2{
+    margin-bottom: 15%;
+}
+.weather{
+    font-size: 25px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.humidity{
+    position: relative;
+    margin-right: 5%;
+}
+
+.wind{
+    position: relative;
+    margin-left: 5%;
+}
+.nav{
+    background-color: #ffffff;
+}
