@@ -150,7 +150,7 @@ let isLetter = (str) => {
 }
 
 // Determine if the Word is a word
-document.addEventListener('keydown',(e)=>{
+document.addEventListener('keydown',async(e)=>{
     if(letter==6 && e.key=="Enter"){
         console.log('Pressed Enter')
         guess = ''
@@ -160,10 +160,10 @@ document.addEventListener('keydown',(e)=>{
         guess += (document.querySelector(`.guess${currentGuess} .letter4`).innerHTML);
         guess += (document.querySelector(`.guess${currentGuess} .letter5`).innerHTML);
         
-        if(isWord(guess)){
+        if(await isWord(guess)){
             letter=1;
-            currentGuess++;
             console.log(`Guess ${currentGuess}: ${guess}`)
+            currentGuess++;
         }
         else{
             notWord(guess)
@@ -172,9 +172,17 @@ document.addEventListener('keydown',(e)=>{
     }
 })
 
-let isWord = (guess) =>{
-    return true; //TEMPORARY
+let isWord = async(guess) =>{
+
+    const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${guess}`);
+    var data = await response.json();
+    console.log(data);
+    if(data.title == "No Definitions Found"){
+        return false;
+    }
+    return true;
+    
 }
 let notWord = (guess) =>{
-    alert(`${guess} is not a word. Please enter an actual word.`)
+    alert(`${guess} is not a word. Please enter an actual word.`);
 }
