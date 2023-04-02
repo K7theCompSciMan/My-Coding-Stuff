@@ -169,12 +169,12 @@ document.addEventListener('keydown',async(e)=>{
                     count++;
                 }
             }
-            if(count ==5){
+            if(count == 5){
                 alert('Correct')
             }
             else{
                 for(var i = 0; i < guess.length; i++){
-                    for(var j = 0; j < word.length; i++){
+                    for(var j = 0; j < word.length; j++){
                         if(guess.charAt(i)==word.charAt(j)){
                             isThere(i)
                         }
@@ -193,7 +193,7 @@ document.addEventListener('keydown',async(e)=>{
     }
 })
 
-const isWord = async(guess) =>{
+const isWord = async(guess) => {
 
     const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${guess}`);
     var data = await response.json();
@@ -204,12 +204,12 @@ const isWord = async(guess) =>{
     return true;
     
 }
-const notWord = (guess) =>{
+const notWord = (guess) => {
     alert(`${guess} is not a word. Please enter an actual word.`);
 }
-const isCorrect = (location) =>{
-
+const isCorrect = (location) => {
+    document.querySelector(`.guess${currentGuess} .letter${location+1}`).style = 'background-color: #0f0;'
 }
-const isThere = (location) =>{
-
+const isThere = (location) => {
+    document.querySelector(`.guess${currentGuess} .letter${location+1}`).style = 'background-color: #ff0;'
 }
