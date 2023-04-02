@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700@display=swap');
+
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    min-height: 100vh;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+}
+
+.game{
+    width: 400px;
+    background-color: cyan;
+    border-radius: 1-px;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.guess1, .guess2, .guess3, .guess4, .guess5, .guess6{
+    display: flex;
+    padding: 10px 10px 10px 10px;
+    align-items: center;
+    justify-content: center;
+}
+.letter1, .letter2, .letter3, .letter4, .letter5{
+    padding: 2px 2px 2px 2px;
+    font-size: 25px;
+    border-style: solid;
+    border-color: #000;
+    border-width: 1px;
+    width: 60px;
+    height: 40px;
+}
+.info{
+    padding-bottom: 50px;
+}
