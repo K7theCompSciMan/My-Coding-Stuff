@@ -42,3 +42,9 @@ body{
 .info{
     padding-bottom: 50px;
 }
+.winner-screen{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
