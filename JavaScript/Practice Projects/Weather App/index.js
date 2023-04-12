@@ -29,7 +29,9 @@ async function getWeather(name) {
     document.querySelector(".icon img").alt = data.weather[0].description;
 }
 document.querySelector(".inputs button").addEventListener("click", () => {
-    getWeather(input.value.toLowerCase());
+    if(input.value!=''){
+        getWeather(input.value.toLowerCase());
+    }
 })
 
 input.addEventListener('keydown', (e)=>{
@@ -44,12 +46,20 @@ unit.addEventListener("click", () => {
     if (unit.innerHTML == "°C"){
         unit.innerHTML = "°F";
         units = "metric";
+        if(input.value.toLowerCase() != ""){
+            getWeather(input.value.toLowerCase());
+            return '';
+        }
         temp.innerHTML = "Temperature °C";
         wind.innerHTML = "Wind Speed (km/h)";
     }
     else if (unit.innerHTML == "°F"){
         unit.innerHTML = "°C";
         units = "imperial"
+        if(input.value.toLowerCase() != ""){
+            getWeather(input.value.toLowerCase());
+            return '';
+        }
         temp.innerHTML = "Temperature °F";
         wind.innerHTML = "Wind Speed (m/h)";
     }
