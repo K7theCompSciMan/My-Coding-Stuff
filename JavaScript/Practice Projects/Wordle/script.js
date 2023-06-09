@@ -151,7 +151,7 @@ while(!endgame){
     document.addEventListener('keydown',async(e)=>{
         if(letter==6 && e.key=="Enter"){
             console.log('Pressed Enter')
-            guess = ''
+            guess = '';
             guess += (document.querySelector(`.guess${currentGuess} .letter1`).innerHTML);
             guess += (document.querySelector(`.guess${currentGuess} .letter2`).innerHTML);
             guess += (document.querySelector(`.guess${currentGuess} .letter3`).innerHTML);

@@ -6,6 +6,6 @@ def returnWinner(board):
 
 a = [['X', 'O', 'X'],
      ['O', 'X', 'O'],
-     ['O', 'X', 'O']]
+     ['O', 'O', 'X']]
 
 print(returnWinner(a))
