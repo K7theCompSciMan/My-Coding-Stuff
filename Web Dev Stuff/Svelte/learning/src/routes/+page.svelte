@@ -4,10 +4,10 @@
 	import welcome_fallback from '$lib/images/svelte-welcome.png';
 </script>
 
-<svelte:head>
+<head>
 	<title>Home</title>
 	<meta name="description" content="Svelte demo app" />
-</svelte:head>
+</head>
 
 <section>
 	<h1 class="w-full">
