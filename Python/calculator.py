@@ -1,5 +1,7 @@
 #The following functions are the operations that the calculator performs
 
+# Do you see this in GitHub?
+
 #This function adds the 2 inputs and displays the equation.
 def addition():
   sum = num1 + num2
