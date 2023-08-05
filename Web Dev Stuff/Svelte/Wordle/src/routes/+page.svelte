@@ -80,7 +80,7 @@
 	}
 
 	function isThere(location: number) {
-		backgroundColors[currentGuess - 1][location] = 'background-color: yellow';
+		backgroundColors[currentGuess - 1][location] = 'background-color: #F1E914;';;
 	}
 
 	function isCorrect(location: number) {
@@ -110,16 +110,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </svelte:head>
 
-<div class="bg-black flex justify-center font-medium w-screen h-screen text-white">
+<div class="bg-black flex justify-center font-medium w-screen h-screen text-white" on:keydown={handleKeyDown}>
 	<h1 class="text-xl mt-32 h-10">Wordle by K7</h1>
 	<div
 		class="bg-blue-500 w-1/4 h-1/2 text-center justify-center absolute top-48 rounded-lg"
-		on:keydown={handleKeyDown}
 		role="textbox"
 		tabindex="0"
 	>
 		{#each guesses as guess, i}
-			<div class="relative w-full mt-4 h-16 items-center justify-center flex">
+			<div class="relative w-full mt-4 h-16 items-center justify-center flex text-black pl-2 pr-2">
 				<div
 					class="p-2 text-lg border-black border-2 w-16 h-10 flex justify-center items-center mr-1 letter1"
 					style={backgroundColors[i][0]}
