@@ -6,6 +6,13 @@
         "configurations": [
                 {
                         "type": "java",
+                        "name": "StudentTester",
+                        "request": "launch",
+                        "mainClass": "StudentTester",
+                        "projectName": "K7 Coding Stuff_a8b7706"
+                },
+                {
+                        "type": "java",
                         "name": "AudioPlayer",
                         "request": "launch",
                         "mainClass": "Practice.AudioPlayer",
