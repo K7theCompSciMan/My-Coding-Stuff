@@ -11,7 +11,7 @@
 		description: string;
 	}
 	let wordGuesser: Project = {
-		link: '',
+		link: 'https://my-wordle-stuff-git-master-k7thecompsciman.vercel.app/',
 		title: 'Word Guesser',
 		img: WordGuesser,
 		description:
@@ -19,7 +19,7 @@
 	};
 
 	let audioPlayer: Project = {
-		link: '',
+		link: 'https://github.com/K7theCompSciMan/My-Coding-Stuff/blob/master/Java/Practice/AudioFrame.java',
 		title: 'Audio Player',
 		img: AudioPlayer,
 		description:
@@ -27,7 +27,7 @@
 	};
 
 	let pongGame: Project = {
-		link: '',
+		link: 'https://github.com/K7theCompSciMan/My-Coding-Stuff/blob/master/Python/pong.py',
 		title: 'Pong Game',
 		img: PongGame,
 		description:

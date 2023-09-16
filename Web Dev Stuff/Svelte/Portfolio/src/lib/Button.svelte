@@ -1,7 +1,4 @@
 <script lang="ts">
-	import { goto } from "$app/navigation";
-
-	export let href = '/';
 	export let name = 'Home';
         export let onclick=()=>{};
 </script>
