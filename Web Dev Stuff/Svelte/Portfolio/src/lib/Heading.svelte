@@ -1,5 +1,5 @@
 <script lang="ts">
-        export let text="Welcome to Kesavan Rangarajan's Portfolio";
+        export let text="Kesavan Rangarajan's Portfolio";
 </script>
 
-<h1 class=" text-center text-4xl shadow-lg py-2">{text}</h1>
+<h1 class=" text-center text-4xl shadow-lg pt-2 pb-4">{text}</h1>

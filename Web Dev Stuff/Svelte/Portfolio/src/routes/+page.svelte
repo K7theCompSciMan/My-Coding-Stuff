@@ -3,15 +3,17 @@
 	import src from '$lib/images/kesavan.png';
 </script>
 
-<div class="text-black" style="height: 92.7vh;">
+<div class="text-black justify-center items-center" style="height: 92.7vh;">
 	<Heading />
+	<br />
+
 	<img
 		{src}
 		alt="Kesavan Rangarajan"
-		class="py-2 text-center relative rounded-2xl"
-		style="width: 18%; height: 45%; left: 40.5%;"
+		class="relative rounded-2xl"
+		style="width: fit-content; height: 45%; left: 50%; transform: translateX(-50%);"
 	/>
-	<p class="text-xl relative" style="left: 20%; width: 60%">
+	<p class="text-xl relative pt-2" style="left: 20%; width: 60%">
 		<strong>
 			Hi! My name is Kesavan Rangarajan, and I am a 10th grade student in the magnet program at
 			Wheeler High School.

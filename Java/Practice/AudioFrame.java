@@ -83,7 +83,7 @@ public class AudioFrame extends JFrame implements ActionListener{
                 
                 // filePath = JOptionPane.showInputDialog("Enter your file's path (every backslash must be 2(two) backslashes or 1(one) forwardslash): ");
                 try {
-                    Thread.sleep(10000);
+                    Thread.sleep(15000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -117,13 +117,13 @@ public class AudioFrame extends JFrame implements ActionListener{
         // this.setIconImage(icon.getImage());
         // JPanel p = new JPanel();
 
-        forwardIcon = new ImageIcon("C:/Users/tekid/Desktop/K7 Coding Stuff/FastForward.png");
-        backwardIcon = new ImageIcon("C:/Users/tekid/Desktop/K7 Coding Stuff/Backward.jpg");
-        playpauseIcon = new ImageIcon("C:/Users/tekid/Desktop/K7 Coding Stuff/playpause.png");
-        stopIcon = new ImageIcon("C:/Users/tekid/Desktop/K7 Coding Stuff/Stop.png");
-        quitIcon = new ImageIcon("C:/Users/tekid/Desktop/K7 Coding Stuff/Quit.png");
-        replayIcon = new ImageIcon("C:/Users/tekid/Desktop/K7 Coding Stuff/Replay.png");
-        loopIcon = new ImageIcon("C:/Users/tekid/Desktop/K7 Coding Stuff/Looppng.png");
+        forwardIcon = new ImageIcon("C:/Code/K7 Coding Stuff/FastForward.jpg");
+        backwardIcon = new ImageIcon("C:/Code/K7 Coding Stuff/Backward.jpg");
+        playpauseIcon = new ImageIcon("C:/Code/K7 Coding Stuff/playpause.png");
+        stopIcon = new ImageIcon("C:/Code/K7 Coding Stuff/Stop.png");
+        quitIcon = new ImageIcon("C:/Code/K7 Coding Stuff/Quit.png");
+        replayIcon = new ImageIcon("C:/Code/K7 Coding Stuff/Replay.png");
+        loopIcon = new ImageIcon("C:/Code/K7 Coding Stuff/Looppng.png");
 
         playpause = new button();
         playpause.setIcon(playpauseIcon);
