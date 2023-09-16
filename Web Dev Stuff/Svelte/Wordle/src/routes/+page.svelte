@@ -104,41 +104,42 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </svelte:head>
 
+		<!-- svelte-ignore a11y-no-static-element-interactions -->
 <div class="bg-black flex justify-center font-medium w-screen h-screen text-white" on:keydown={handleKeyDown} >
 	<h1 class="text-xl mt-32 h-10">Word Guesser by Kesavan Rangarajan</h1>
 	<div
-		class="bg-blue-500 w-1/4 h-1/2 text-center justify-center absolute top-48 rounded-lg"
+		class="bg-blue-500 w-1/4 h-fit text-center justify-center absolute top-48 rounded-lg "
 		role="textbox"
 		tabindex="0"
 	>
 		{#each guesses as guess, i}
-			<div class="relative w-full mt-4 h-16 items-center justify-center flex text-black pl-2 pr-2">
+			<div class="relative w-full mt-4 h-16 items-center justify-center flex  text-black pl-2 pr-2">
 				<div
-					class="p-2 text-lg border-black border-2 w-16 h-10 flex justify-center items-center mr-1 letter1"
+					class="p-2 text-lg border-black border-2 w-1/5 h-2/3 flex justify-center items-center mr-1 letter1"
 					style={backgroundColors[i][0]}
 				>
 					{guess.charAt(0)}
 				</div>
 				<div
-					class="p-2 text-lg border-black border-2 w-16 h-10 flex justify-center items-center mr-1 letter2"
+					class="p-2 text-lg border-black border-2 w-1/5 h-2/3 flex justify-center items-center mr-1 letter2"
 					style={backgroundColors[i][1]}
 				>
 					{guess.charAt(1)}
 				</div>
 				<div
-					class="p-2 text-lg border-black border-2 w-16 h-10 flex justify-center items-center mr-1 letter3"
+					class="p-2 text-lg border-black border-2 w-1/5 h-2/3 flex justify-center items-center mr-1 letter3"
 					style={backgroundColors[i][2]}
 				>
 					{guess.charAt(2)}
 				</div>
 				<div
-					class="p-2 text-lg border-black border-2 w-16 h-10 flex justify-center items-center mr-1 letter4"
+					class="p-2 text-lg border-black border-2 w-1/5 h-2/3 flex justify-center items-center mr-1 letter4"
 					style={backgroundColors[i][3]}
 				>
 					{guess.charAt(3)}
 				</div>
 				<div
-					class="p-2 text-lg border-black border-2 w-16 h-10 flex justify-center items-center mr-1 letter5"
+					class="p-2 text-lg border-black border-2 w-1/5 h-2/3 flex justify-center items-center mr-1 letter5"
 					style={backgroundColors[i][4]}
 				>
 					{guess.charAt(4)}
