@@ -7,7 +7,5 @@
 
 	<p class="text-2xl py-16">
 		You can contact me at k7rang2018@gmail.com.
-		<br />
-		My phone number is 470-628-4425.
 	</p>
 </div>
