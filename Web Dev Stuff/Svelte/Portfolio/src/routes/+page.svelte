@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Heading from '$lib/Heading.svelte';
-	import src from '$lib/images/kesavan.png';
+	import src from '$lib/images/kesavan.jpeg';
 </script>
 
 <div class="text-black justify-center items-center" style="height: 92.7vh;">
