@@ -11,7 +11,7 @@
 		description: string;
 	}
 	let wordGuesser: Project = {
-		link: 'https://my-wordle-stuff-git-master-k7thecompsciman.vercel.app/',
+		link: 'https://my-wordle-stuff.vercel.app/',
 		title: 'Word Guesser',
 		img: WordGuesser,
 		description:
