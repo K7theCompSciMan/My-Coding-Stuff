@@ -52,7 +52,7 @@ class Board:
                         [self.BLACK_PAWN_1, self.BLACK_PAWN_2, self.BLACK_PAWN_3, self.BLACK_PAWN_4, self.BLACK_PAWN_5, self.BLACK_PAWN_6, self.BLACK_PAWN_7, self.BLACK_PAWN_8], 
                         [self.BLACK_ROOK_1, self.BLACK_KNIGHT_1, self.BLACK_BISHOP_1, self.BLACK_QUEEN, self.BLACK_KING, self.BLACK_BISHOP_2, self.BLACK_KNIGHT_2, self.BLACK_ROOK_2]
                         ]
-                self.board = [
+                self.bg_board = [
                         ["D", "L", "D", "L", "D", "L", "D", "L"],
                         ["L", "D", "L", "D", "L", "D", "L", "D"],
                         ["D", "L", "D", "L", "D", "L", "D", "L"],
@@ -66,12 +66,12 @@ class Board:
 
 
         def update_board(self, new_board):
-                self.board = new_board
+                self.bg_board = new_board
         def draw(self, WIN):
                 for row in range(8):
                         for col in range(8):
                                 rect = p.Rect(row*self.SQUARE_SIZE, col*self.SQUARE_SIZE, self.SQUARE_SIZE, self.SQUARE_SIZE)    
-                                if self.board[row][col] == "D":
+                                if self.bg_board[row][col] == "D":
                                         p.draw.rect(WIN, self.DARK_SQUARE, rect)
                                 else:
                                         p.draw.rect(WIN, self.LIGHT_SQUARE, rect)

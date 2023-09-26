@@ -1,4 +1,6 @@
 import pygame as p
+import random
+import time
 from Button import Button
 from Board import Board
 p.init()
@@ -82,6 +84,11 @@ def local():
                                 p.quit()
                                 return "quit"
                 
+                
+                BOARD.draw(WIN)
+                time.sleep(0.5)
+                print(BOARD.WHITE_KING.get_legal_moves(BOARD.piece_board))
+                BOARD.WHITE_KING.move_to(random.choice(BOARD.WHITE_KING.get_legal_moves(BOARD.piece_board))[0], random.choice(BOARD.WHITE_KING.get_legal_moves(BOARD.piece_board))[1], BOARD)
                 BOARD.draw(WIN)
                 p.display.flip()
                 
@@ -91,6 +98,8 @@ def ai():
                 for event in p.event.get():
                         if event.type == p.QUIT:
                                 p.quit()
+                                return "quit"
+                BOARD.draw(WIN)
                 p.display.flip()
 
 def play_screen(back_button):
@@ -195,4 +204,4 @@ def main():
                 CLOCK.tick(FPS)
 main()
 BOARD.WHITE_QUEEN.move_to(5, 0)
-print(BOARD.WHITE_QUEEN.get_legal_moves(BOARD.board))
+print(BOARD.WHITE_QUEEN.get_legal_moves(BOARD.bg_board))

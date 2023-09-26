@@ -1,3 +1,4 @@
+import time
 import pygame as p
 class Piece:
 
@@ -14,10 +15,12 @@ class Piece:
                 
         def __str__(self) -> str:
                 return self.symbol
-        def move_to(self, rank, file):
+        def move_to(self, rank, file, board):
+                board.piece_board[self.rank][self.file] = board.EMPTY
                 self.rank = rank
                 self.file = file
                 self.location = (rank, file)
+                board.piece_board[self.rank][self.file] = self
         def get_legal_moves(self, board):
                 legal_moves = []
                 match self.type:
@@ -44,11 +47,11 @@ class Piece:
                                 legal_moves.append((self.rank + 2, self.file))
                         elif(self.rank +1 < 8 and board[self.rank + 1][self.file].color == None):
                                 legal_moves.append((self.rank + 1, self.file))
-                        if(self.file + 1 < 8):
+                        if(self.file + 1 < 8 and self.rank + 1 < 8):
                                 target_square = board[self.rank + 1][self.file + 1]
                                 if(target_square.color == "Black"):
                                         legal_moves.append((self.rank + 1, self.file + 1))
-                        if(self.file-1 >= 0):
+                        if(self.file-1 >= 0 and self.rank + 1 < 8):
                                 target_square = board[self.rank + 1][self.file - 1]
                                 if(target_square.color == "Black"):
                                         legal_moves.append((self.rank + 1, self.file - 1))
@@ -58,11 +61,11 @@ class Piece:
                                 legal_moves.append((self.rank - 2, self.file))
                         elif(self.rank-1 >=0 and board[self.rank - 1][self.file].color == None):
                                 legal_moves.append((self.rank - 1, self.file))
-                        if(self.file + 1 < 8):
+                        if(self.file + 1 < 8 and self.rank -1 >= 0):
                                 target_square = board[self.rank - 1][self.file + 1]
                                 if(target_square.color == "White"):
                                         legal_moves.append((self.rank - 1, self.file + 1))
-                        if(self.file-1 >= 0):
+                        if(self.file-1 >= 0 and self.rank -1 >= 0):
                                 target_square = board[self.rank - 1][self.file - 1]
                                 if(target_square.color == "White"):
                                         legal_moves.append((self.rank - 1, self.file - 1))
