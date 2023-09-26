@@ -3,7 +3,7 @@ from Button import Button
 from Board import Board
 p.init()
 
-BOARD = Board()
+BOARD = Board(100, 100)
 
 BLACK = (0,0,0)
 WHITE = (255,255,255)
@@ -82,6 +82,7 @@ def local():
                                 p.quit()
                                 return "quit"
                 
+                BOARD.draw(WIN)
                 p.display.flip()
                 
 def ai():
@@ -193,5 +194,5 @@ def main():
                 p.display.flip()
                 CLOCK.tick(FPS)
 main()
-BOARD.WHITE_BISHOP_1.move_to(4,4)
-print(BOARD.WHITE_BISHOP_1.get_legal_moves(BOARD.board))
+BOARD.WHITE_QUEEN.move_to(5, 0)
+print(BOARD.WHITE_QUEEN.get_legal_moves(BOARD.board))
