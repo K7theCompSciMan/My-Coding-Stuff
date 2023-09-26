@@ -43,26 +43,26 @@ class Board:
                 self.DARK_SQUARE = (209, 139, 71)
                 self.SQUARE_SIZE = 100
                 self.piece_board = [
-                        [self.WHITE_ROOK_1, self.WHITE_KNIGHT_1, self.WHITE_BISHOP_1, self.WHITE_QUEEN, self.WHITE_KING, self.WHITE_BISHOP_2, self.WHITE_KNIGHT_2, self.WHITE_ROOK_2],
-                        [self.WHITE_PAWN_1, self.WHITE_PAWN_2, self.WHITE_PAWN_3, self.WHITE_PAWN_4, self.WHITE_PAWN_5, self.WHITE_PAWN_6, self.WHITE_PAWN_7, self.WHITE_PAWN_8],
-                        [self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY],
+                        [self.WHITE_ROOK_1, self.WHITE_KNIGHT_1, self.WHITE_BISHOP_1, self.WHITE_KING, self.WHITE_QUEEN,  self.WHITE_BISHOP_2, self.WHITE_KNIGHT_2, self.WHITE_ROOK_2],
+                        [self.WHITE_PAWN_1, self.EMPTY, self.WHITE_PAWN_3, self.WHITE_PAWN_4, self.WHITE_PAWN_5, self.WHITE_PAWN_6, self.WHITE_PAWN_7, self.WHITE_PAWN_8],
+                        [self.EMPTY       , self.EMPTY       , self.EMPTY    , self.EMPTY    , self.EMPTY    , self.EMPTY    , self.EMPTY    , self.EMPTY    ],
                         [self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY],
                         [self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY],
                         [self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY],
                         [self.BLACK_PAWN_1, self.BLACK_PAWN_2, self.BLACK_PAWN_3, self.BLACK_PAWN_4, self.BLACK_PAWN_5, self.BLACK_PAWN_6, self.BLACK_PAWN_7, self.BLACK_PAWN_8], 
-                        [self.BLACK_ROOK_1, self.BLACK_KNIGHT_1, self.BLACK_BISHOP_1, self.BLACK_QUEEN, self.BLACK_KING, self.BLACK_BISHOP_2, self.BLACK_KNIGHT_2, self.BLACK_ROOK_2]
+                        [self.BLACK_ROOK_1, self.BLACK_KNIGHT_1, self.BLACK_BISHOP_1, self.BLACK_KING, self.BLACK_QUEEN, self.BLACK_BISHOP_2, self.BLACK_KNIGHT_2, self.BLACK_ROOK_2]
                         ]
                 self.bg_board = [
-                        ["D", "L", "D", "L", "D", "L", "D", "L"],
                         ["L", "D", "L", "D", "L", "D", "L", "D"],
                         ["D", "L", "D", "L", "D", "L", "D", "L"],
                         ["L", "D", "L", "D", "L", "D", "L", "D"],
                         ["D", "L", "D", "L", "D", "L", "D", "L"],
                         ["L", "D", "L", "D", "L", "D", "L", "D"],
                         ["D", "L", "D", "L", "D", "L", "D", "L"],
-                        ["L", "D", "L", "D", "L", "D", "L", "D"]
+                        ["L", "D", "L", "D", "L", "D", "L", "D"],
+                        ["D", "L", "D", "L", "D", "L", "D", "L"]
                 ]
-                
+                self.white_to_move = True                       
 
 
         def update_board(self, new_board):

@@ -84,11 +84,7 @@ def local():
                                 p.quit()
                                 return "quit"
                 
-                
-                BOARD.draw(WIN)
-                time.sleep(0.5)
-                print(BOARD.WHITE_KING.get_legal_moves(BOARD.piece_board))
-                BOARD.WHITE_KING.move_to(random.choice(BOARD.WHITE_KING.get_legal_moves(BOARD.piece_board))[0], random.choice(BOARD.WHITE_KING.get_legal_moves(BOARD.piece_board))[1], BOARD)
+                BOARD.white_to_move = not BOARD.white_to_move
                 BOARD.draw(WIN)
                 p.display.flip()
                 

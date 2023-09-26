@@ -113,9 +113,9 @@ class Piece:
                         try:
                                 if(self.rank - i >= 0):
                                         target_square_3 = board[self.rank - i][self.file]
+                                        if (target_square_3.color != None):
+                                                count_3 += 1
                                         if(target_square_3.color != self.color and count_3 < 1):
-                                                if (target_square_3.color != None):
-                                                        count_3 += 1
                                                 target_location = (self.rank - i, self.file)
                                                 if (not (target_location in legal_moves) ):
                                                         legal_moves.append(target_location)
@@ -124,9 +124,9 @@ class Piece:
                 for i in range(1, 8):
                         try:
                                 target_square_1 = board[self.rank + i][self.file]
+                                if (target_square_1.color != None):
+                                        count_1 += 1
                                 if(target_square_1.color != self.color and count_1 < 1):
-                                        if (target_square_1.color != None):
-                                                count_1 += 1
                                         target_location = (self.rank + i, self.file)
                                         if (not (target_location in legal_moves) ):
                                                 legal_moves.append(target_location)
@@ -137,9 +137,9 @@ class Piece:
                         try:
                                 if(self.file - i >= 0):
                                         target_square_4 = board[self.rank][self.file - i]
+                                        if (target_square_4.color != None):
+                                                count_4 += 1
                                         if(target_square_4.color != self.color and count_4 < 1):
-                                                if (target_square_4.color != None):
-                                                        count_4 += 1
                                                 target_location = (self.rank, self.file - i)
                                                 if (not (target_location in legal_moves) ):
                                                         legal_moves.append(target_location)
@@ -148,15 +148,18 @@ class Piece:
                 for i in range(1, 8):
                         try:
                                 target_square_2 = board[self.rank][self.file + i]
+                                if (target_square_2.color != None):
+                                        count_2 += 1
                                 if(target_square_2.color != self.color and count_2 < 1):
-                                        if (target_square_2.color != None):
-                                                count_2 += 1
                                         target_location = (self.rank, self.file + i)
                                         if (not (target_location in legal_moves) ):
                                                 legal_moves.append(target_location)
                         except:
                                 pass
-                legal_moves.remove((self.rank, self.file))
+                try:
+                        legal_moves.remove((self.rank, self.file))
+                except:
+                        pass
                 return legal_moves
         
         def get_knight_moves(self, board):
@@ -168,7 +171,7 @@ class Piece:
                 if(self.file + 2 < 8 and self.rank - 1 >= 0):
                         target_square = board[self.rank - 1][self.file + 2]
                         if(target_square.color != self.color):
-                                legal_moves.append((self.rank - 1, self.file + 2))
+                         legal_moves.append((self.rank - 1, self.file + 2))
                 if(self.file - 2 >= 0 and self.rank + 1 < 8):
                         target_square = board[self.rank + 1][self.file - 2]
                         if(target_square.color != self.color):
@@ -189,10 +192,10 @@ class Piece:
                         target_square = board[self.rank + 2][self.file - 1]
                         if(target_square.color != self.color):
                                 legal_moves.append((self.rank + 2, self.file - 1))
-                if(self.file - 1 >= 0 and self.rank - 2 >= 0):
+                if(self.file - 1 >= 0 and self.rank - 2 >= 0):  
                         target_square = board[self.rank - 2][self.file - 1]
-                        if(target_square.color != self.color):
-                                legal_moves.append((self.rank - 2, self.file - 1))
+                        # if(target_square.color != self.color):
+                        legal_moves.append((self.rank - 2, self.file - 1))
                 return legal_moves
 
         def get_bishop_moves(self, board):
@@ -206,9 +209,9 @@ class Piece:
                                 try:
                                         
                                         target_square_1 = board[self.rank + i][self.file + i]
+                                        if target_square_1.color != None:
+                                                count_1+=1
                                         if(target_square_1.color != self.color and count_1 < 1):
-                                                if target_square_1.color != None:
-                                                        count_1+=1
                                                 target_location = (self.rank + i, self.file + i)
                                                 if (not (target_location in legal_moves) ):
                                                         legal_moves.append(target_location)
@@ -217,9 +220,9 @@ class Piece:
                                 try:
                                         if(self.file - i >= 0 and self.rank - i >= 0):
                                                 target_square_2 = board[self.rank - i][self.file - i]
+                                                if target_square_2.color != None:
+                                                        count_2+=1
                                                 if(target_square_2.color != self.color and count_2 < 1):
-                                                        if target_square_2.color != None:
-                                                                count_2+=1
                                                         target_location = (self.rank - i, self.file - i)
                                                         if (not (target_location in legal_moves)  ):
                                                                 legal_moves.append(target_location)
@@ -229,9 +232,9 @@ class Piece:
                                 try:
                                         if(self.file -i >= 0):
                                                 target_square_3 = board[self.rank + i][self.file - i]
+                                                if target_square_3.color != None:
+                                                        count_3+=1
                                                 if(target_square_3.color != self.color and count_3 < 1):
-                                                        if target_square_3.color != None:
-                                                                count_3+=1
                                                         target_location = (self.rank + i, self.file - i)
                                                         if (not (target_location in legal_moves) ):
                                                                 legal_moves.append(target_location)
@@ -241,9 +244,9 @@ class Piece:
                                 try:
                                         if(self.rank - i >= 0):
                                                 target_square_4 = board[self.rank - i][self.file + i]
+                                                if target_square_4.color != None:
+                                                        count_4+=1
                                                 if(target_square_4.color != self.color and count_4 < 1):
-                                                        if target_square_4.color != None:
-                                                                count_4+=1
                                                         target_location = (self.rank - i, self.file + i)
                                                         if (not (target_location in legal_moves) ):
                                                                 legal_moves.append(target_location)
