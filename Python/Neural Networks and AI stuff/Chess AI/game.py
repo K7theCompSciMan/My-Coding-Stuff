@@ -1,11 +1,12 @@
 import pygame as p
-import random
-import time
+import math
 from Button import Button
 from Board import Board
 p.init()
 
 BOARD = Board(100, 100)
+
+BOARD_STATES = [BOARD.piece_board]
 
 BLACK = (0,0,0)
 WHITE = (255,255,255)
@@ -84,7 +85,31 @@ def local():
                                 p.quit()
                                 return "quit"
                 
-                BOARD.white_to_move = not BOARD.white_to_move
+                        for rank in BOARD.piece_board:
+                                for piece in rank:
+                                        if(piece.image != None):
+                                                if(piece.is_clicked(event)):
+                                                        piece.display_legal_moves(BOARD, WIN)
+                                                        turn_over = False
+                                                        piece.selected = True
+                                                        p.display.flip()
+                                                        while not turn_over:
+                                                                for event in p.event.get():
+                                                                        if event.type == p.QUIT:
+                                                                                p.quit()
+                                                                                return "quit"
+                                                                        if event.type == p.MOUSEBUTTONUP:
+                                                                                turn_over = True
+                                                                                piece.selected = False
+                                                        print(math.floor(event.pos[1]/100), math.floor(event.pos[0]/100))
+                                                        if(piece.is_legal_move(math.floor(event.pos[1]/100), math.floor(event.pos[0]/100), BOARD)):
+                                                                piece.move_to(math.floor(event.pos[1]/100), math.floor(event.pos[0]/100), BOARD)
+                                                                BOARD.white_to_move = not BOARD.white_to_move
+                                                                BOARD_STATES.append(BOARD.piece_board)
+                                                        else:
+                                                                piece.move_to(piece.original_location[0], piece.original_location[1], BOARD)
+                                                        BOARD.draw(WIN)
+
                 BOARD.draw(WIN)
                 p.display.flip()
                 
@@ -199,5 +224,3 @@ def main():
                 p.display.flip()
                 CLOCK.tick(FPS)
 main()
-BOARD.WHITE_QUEEN.move_to(5, 0)
-print(BOARD.WHITE_QUEEN.get_legal_moves(BOARD.bg_board))

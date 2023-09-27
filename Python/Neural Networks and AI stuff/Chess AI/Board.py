@@ -44,7 +44,7 @@ class Board:
                 self.SQUARE_SIZE = 100
                 self.piece_board = [
                         [self.WHITE_ROOK_1, self.WHITE_KNIGHT_1, self.WHITE_BISHOP_1, self.WHITE_KING, self.WHITE_QUEEN,  self.WHITE_BISHOP_2, self.WHITE_KNIGHT_2, self.WHITE_ROOK_2],
-                        [self.WHITE_PAWN_1, self.EMPTY, self.WHITE_PAWN_3, self.WHITE_PAWN_4, self.WHITE_PAWN_5, self.WHITE_PAWN_6, self.WHITE_PAWN_7, self.WHITE_PAWN_8],
+                        [self.WHITE_PAWN_1, self.WHITE_PAWN_2, self.WHITE_PAWN_3, self.WHITE_PAWN_4, self.WHITE_PAWN_5, self.WHITE_PAWN_6, self.WHITE_PAWN_7, self.WHITE_PAWN_8],
                         [self.EMPTY       , self.EMPTY       , self.EMPTY    , self.EMPTY    , self.EMPTY    , self.EMPTY    , self.EMPTY    , self.EMPTY    ],
                         [self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY],
                         [self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY, self.EMPTY],
@@ -78,5 +78,5 @@ class Board:
                 for row in range(8):
                         for col in range(8):
                                 if self.piece_board[row][col].type != "Empty":
-                                        WIN.blit(self.piece_board[row][col].image, (col*self.SQUARE_SIZE, row*self.SQUARE_SIZE))
+                                        self.piece_board[row][col].draw(WIN)
 

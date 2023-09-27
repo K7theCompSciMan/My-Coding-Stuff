@@ -10,18 +10,28 @@ class Piece:
                 self.rank = rank
                 self.file = file
                 self.location = (rank, file)
+                self.original_location = (rank, file)
                 self.image = image
+                if(self.image != None):
+                        self.rect = p.Rect(self.file*100, self.rank*100, 100, 100)
 
                 
         def __str__(self) -> str:
                 return self.symbol
         def move_to(self, rank, file, board):
-                board.piece_board[self.rank][self.file] = board.EMPTY
-                self.rank = rank
-                self.file = file
-                self.location = (rank, file)
-                board.piece_board[self.rank][self.file] = self
-        def get_legal_moves(self, board):
+                if((rank, file) in self.get_legal_moves(board.piece_board)):
+                        
+                        board.piece_board[self.rank][self.file] = board.EMPTY
+                        self.rank = rank
+                        self.file = file
+                        self.location = (rank, file)
+                        board.piece_board[self.rank][self.file] = self
+                        self.rect = p.Rect(self.file*100, self.rank*100, 100, 100)
+                        return True
+                else:
+                        return False
+                
+        def get_legal_moves(self, board: list):
                 legal_moves = []
                 match self.type:
                         case  "Pawn":
@@ -35,7 +45,10 @@ class Piece:
                         case "Bishop":
                                 legal_moves = self.get_bishop_moves(board)
                         case "Queen":
-                                legal_moves.append(self.get_rook_moves(board) + self.get_bishop_moves(board))
+                                for move in self.get_rook_moves(board):
+                                        legal_moves.append(move)
+                                for move in self.get_bishop_moves(board):
+                                        legal_moves.append(move)
                 return legal_moves
         
         
@@ -105,10 +118,10 @@ class Piece:
 
         def get_rook_moves(self, board):
                 legal_moves = []
-                count_1 = 0
-                count_2 = 0
-                count_3 = 0
-                count_4 = 0
+                count_1 = -1
+                count_2 = -1
+                count_3 = -1
+                count_4 = -1
                 for i in range(7, -1, -1):
                         try:
                                 if(self.rank - i >= 0):
@@ -200,10 +213,10 @@ class Piece:
 
         def get_bishop_moves(self, board):
                 legal_moves = []
-                count_1 = 0
-                count_2 = 0
-                count_3 = 0;
-                count_4 = 0;
+                count_1 = -1
+                count_2 = -1
+                count_3 = -1;
+                count_4 = -1;
                 
                 for i in range(1, 9):
                                 try:
@@ -254,3 +267,17 @@ class Piece:
                                         pass
                 return legal_moves
 
+        def is_clicked(self, event):
+                if event.type == p.MOUSEBUTTONDOWN:
+                        if (self.rect.collidepoint(event.pos)):
+                                return True
+        def draw(self, WIN):
+                WIN.blit(self.image, self.rect)
+        def display_legal_moves(self, board, WIN: p.Surface):
+                legal_moves = self.get_legal_moves(board.piece_board)
+                for move in legal_moves:
+                        print(move)
+                        p.draw.circle(WIN, (0, 255, 0), ((move[1]*100 + 50), (move[0]*100 + 50)), 10)
+        def is_legal_move(self, rank, file, board):
+                if((rank, file) in self.get_legal_moves(board.piece_board)):
+                        return True
