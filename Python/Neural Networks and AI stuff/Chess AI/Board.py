@@ -104,7 +104,9 @@ class Board:
             ["L", "D", "L", "D", "L", "D", "L", "D"],
             ["D", "L", "D", "L", "D", "L", "D", "L"]
         ]
+        self.board_states = [self.piece_board]
         self.white_to_move = True
+        self.cant_move = False
 
     def update_board(self, new_board):
         self.bg_board = new_board
@@ -122,3 +124,17 @@ class Board:
             for col in range(8):
                 if self.piece_board[row][col].type != "Empty":
                     self.piece_board[row][col].draw(WIN)
+    def add_state(self, new_state):
+        self.board_states.append(new_state)
+    def previous_state(self):
+        if(self.board_states.index(self.piece_board) > 0):
+            temp = self.board_states[self.board_states.index(self.piece_board)-1]
+            self.piece_board = temp
+            self.cant_move = True
+    def next_state(self):
+        if self.board_states.index(self.piece_board) < len(self.board_states)-1:
+            temp = self.board_states[self.board_states.index(self.piece_board)+1]
+            self.piece_board = temp
+            self.cant_move = True
+        if self.board_states.index(self.piece_board) == len(self.board_states)-1:
+            self.cant_move = False

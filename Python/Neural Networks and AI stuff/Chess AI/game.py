@@ -6,7 +6,7 @@ p.init()
 
 BOARD = Board(100, 100)
 
-BOARD_STATES = [BOARD.piece_board]
+
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -82,33 +82,40 @@ def local():
             if event.type == p.QUIT:
                 p.quit()
                 return "quit"
+            if event.type == p.K_LEFT:
+                BOARD.previous_state()
+                p.display.flip()
+                BOARD.draw(WIN)
+            if event.type == p.K_RIGHT:
+                BOARD.next_state()
+                BOARD.draw(WIN)
+                p.display.flip()
 
             for rank in BOARD.piece_board:
                 for piece in rank:
                     if (piece.image != None):
                         if (piece.is_clicked(event)):
-                            piece.display_legal_moves(BOARD, WIN)
-                            turn_over = False
-                            piece.selected = True
-                            p.display.flip()
-                            while not turn_over:
-                                for event in p.event.get():
-                                    if event.type == p.QUIT:
-                                        p.quit()
-                                        return "quit"
-                                    if event.type == p.MOUSEBUTTONUP:
-                                        turn_over = True
-                                        piece.selected = False
-                            print(math.floor(
-                                event.pos[1]/100), math.floor(event.pos[0]/100))
+                            if(BOARD.white_to_move == (piece.color == "White") and not BOARD.cant_move):
+                                piece.display_legal_moves(BOARD, WIN)
+                                turn_over = False
+                                piece.selected = True
+                                p.display.flip()
+                                while not turn_over:
+                                    for event in p.event.get():
+                                        if event.type == p.QUIT:
+                                            p.quit()
+                                            return "quit"
+                                        if event.type == p.MOUSEBUTTONUP:
+                                            turn_over = True
+                                            piece.selected = False
                             if (piece.is_legal_move(math.floor(event.pos[1]/100), math.floor(event.pos[0]/100), BOARD)):
                                 piece.move_to(math.floor(
-                                    event.pos[1]/100), math.floor(event.pos[0]/100), BOARD)
+                                    event.pos[1]/100), math.floor(event.pos[0]/100), BOARD, BOARD.white_to_move)
                                 BOARD.white_to_move = not BOARD.white_to_move
-                                BOARD_STATES.append(BOARD.piece_board)
+                                BOARD.add_state(BOARD.piece_board)
                             else:
                                 piece.move_to(
-                                    piece.original_location[0], piece.original_location[1], BOARD)
+                                    piece.original_location[0], piece.original_location[1], BOARD, BOARD.white_to_move)
                             BOARD.draw(WIN)
 
         BOARD.draw(WIN)
