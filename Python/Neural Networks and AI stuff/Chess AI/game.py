@@ -96,7 +96,7 @@ def local():
                     if (piece.image != None):
                         if (piece.is_clicked(event)):
                             if(BOARD.white_to_move == (piece.color == "White") and not BOARD.cant_move):
-                                piece.display_legal_moves(BOARD, WIN)
+                                piece.display_legal_moves(WIN)
                                 turn_over = False
                                 piece.selected = True
                                 p.display.flip()
@@ -108,14 +108,13 @@ def local():
                                         if event.type == p.MOUSEBUTTONUP:
                                             turn_over = True
                                             piece.selected = False
-                            if (piece.is_legal_move(math.floor(event.pos[1]/100), math.floor(event.pos[0]/100), BOARD)):
+                            if (piece.is_legal_move(math.floor(event.pos[1]/100), math.floor(event.pos[0]/100))):
                                 piece.move_to(math.floor(
-                                    event.pos[1]/100), math.floor(event.pos[0]/100), BOARD, BOARD.white_to_move)
-                                BOARD.white_to_move = not BOARD.white_to_move
+                                    event.pos[1]/100), math.floor(event.pos[0]/100))
                                 BOARD.add_state(BOARD.piece_board)
                             else:
                                 piece.move_to(
-                                    piece.original_location[0], piece.original_location[1], BOARD, BOARD.white_to_move)
+                                    piece.original_location[0], piece.original_location[1])
                             BOARD.draw(WIN)
 
         BOARD.draw(WIN)
