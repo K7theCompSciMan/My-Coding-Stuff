@@ -3,7 +3,6 @@ import pytube, sys
 def getlink():
     link = sys.argv[1]
     yt = pytube.YouTube(link)
-
     print("Title:", yt.title)
 
     print("Views:", yt.views)
@@ -12,7 +11,7 @@ def getlink():
     if correct == 'yes':
         yd = yt.streams.get_highest_resolution()
 
-        yd.download("C:\\Users\\tekid\Desktop\\Downloaded Youtube Videos")
+        yd.download("C:\\Users\\k7ran\\Desktop\\Downloaded Youtube Videos")
 
     print("Downloaded")
 
