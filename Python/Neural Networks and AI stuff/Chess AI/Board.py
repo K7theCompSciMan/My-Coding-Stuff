@@ -72,7 +72,7 @@ class Board:
             'Python', 'Neural Networks and AI stuff', "Chess AI", "images", "black_pawn.png")), (self.WIDTH, self.HEIGHT)))
         self.BLACK_PAWN_8 = Piece("Pawn", "Black", "p", 6, 7, p.transform.scale(p.image.load(os.path.join(
             'Python', 'Neural Networks and AI stuff', "Chess AI", "images", "black_pawn.png")), (self.WIDTH, self.HEIGHT)))
-        self.EMPTY = Piece("Empty", None, " ", None, None, None)
+        self.EMPTY = Piece("Empty", None, "", None, None, None)
         self.LIGHT_SQUARE = (255, 206, 158)
         self.DARK_SQUARE = (209, 139, 71)
         self.SQUARE_SIZE = 100

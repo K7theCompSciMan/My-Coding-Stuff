@@ -49,37 +49,8 @@ class Piece:
 
     def get_queen_moves(self, board):
         legal_moves = []
-        directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
-
-        for direction in directions:
-            target_rank = self.rank + direction[0]
-            target_file = self.file + direction[1]
-
-            while 0 <= target_rank <= 7 and 0 <= target_file <= 7:
-                target_square = board[target_rank][target_file]
-
-                if target_square.color is None:
-                    legal_moves.append((target_rank, target_file))
-                elif target_square.color != self.color:
-                    legal_moves.append((target_rank, target_file))
-                    break
-                else:
-                    break
-
-                target_rank += direction[0]
-                target_file += direction[1]
-        counts = [0, 0, 0, 0]
-        for i in range(1, 9):
-            directions = [(i, i), (-i, -i), (i, -i), (-i, i)]
-            for i in range(0, 4):
-                    try: 
-                        target_square = (self.rank + directions[i][0], self.file + directions[i][1])
-                        if (0 <= target_square[0] <= 7 and 0 <= target_square[1] <= 7 and board[target_square[0]][target_square[1]].color != self.color and counts[i] == 0 and (not target_square in legal_moves)):
-                            legal_moves.append(target_square)
-                        if (board[target_square[0]][target_square[1]].color != None):
-                            counts[i] = 1
-                    except:
-                        pass
+        legal_moves += self.get_rook_moves(board)
+        legal_moves += self.get_bishop_moves(board)
         return legal_moves
 
     def get_pawn_moves(self, board):
@@ -112,6 +83,14 @@ class Piece:
                 target_square = board[self.rank - 1][self.file - 1]
                 if (target_square.color == "White"):
                     legal_moves.append((self.rank - 1, self.file - 1))
+        legal_moves += self.get_en_passant_moves(board)
+        return legal_moves
+    
+    def get_en_passant_moves(self, board, prev_board = None):
+        legal_moves = []
+        if(self.color == "White"):
+            pass
+        
         return legal_moves
 
     def get_king_moves(self, board):
