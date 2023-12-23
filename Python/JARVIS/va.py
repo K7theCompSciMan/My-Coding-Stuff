@@ -7,7 +7,7 @@ import json
 
 load_dotenv()
 
-OPENAI_API_KEY = os.getenv('OPENAI_APIKEY')
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 openai.api_key = OPENAI_API_KEY
 
 # TODO: Improve Speech Recognition
