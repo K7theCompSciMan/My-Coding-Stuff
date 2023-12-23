@@ -6,12 +6,9 @@ def getlink():
     print("Title:", yt.title)
 
     print("Views:", yt.views)
-    correct = input("Is that the right video? ")
+    yd = yt.streams.get_highest_resolution()
 
-    if correct == 'yes':
-        yd = yt.streams.get_highest_resolution()
-
-        yd.download("C:\\Users\\k7ran\\Desktop\\Downloaded Youtube Videos")
+    print(yd.download("C:\\Users\\k7ran\\OneDrive\\Desktop\\Downloaded Youtube Videos"))
 
     print("Downloaded")
 
