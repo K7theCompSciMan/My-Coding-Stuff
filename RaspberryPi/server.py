@@ -6,17 +6,15 @@ s.listen(5)
 s.settimeout(5)
 print("Server running")
 
-def send(message):
+def send(conn, message):
     print("Sending message: " + message)
     conn.send(message.encode())
 
-def recieve():
+def recieve(conn):
     data = conn.recv(1024).decode()
     print("Received message: " + data)
     return data
 
-while True:
+def main():
     conn, addr = s.accept()
-    print("Connected to " + addr[0] + ":" + str(addr[1]))
-    send("Hello from the server")
-    recieve()
+    return conn, addr

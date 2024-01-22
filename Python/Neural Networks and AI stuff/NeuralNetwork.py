@@ -1,22 +1,22 @@
 import numpy as np
 class NeuralNetwork:
-        def __init__(self, learning_rate):
+        def __init__(self, learning_rate : float):
                 self.weights = np.array([np.random.randn(), np.random.random()])
                 self.bias = np.random.randn()
                 self.learning_rate = learning_rate
         
-        def sigmoid(self, x):
+        def sigmoid(self, x: float) -> float:
                 return 1/(1+np.exp(-x))
         
-        def sigmoid_deriv(self, x):
+        def sigmoid_deriv(self, x: float) -> float:
                 return self.sigmoid(x) * (1-self.sigmoid(x))
         
-        def predict(self, input_vector):
+        def predict(self, input_vector: np.ndarray) -> np.ndarray:
                 layer_1 = np.dot(input_vector, self.weights) + self.bias
                 layer_2 = self.sigmoid(layer_1)
                 return layer_2
         
-        def compute_gradients(self, input_vector, target):
+        def compute_gradients(self, input_vector: np.ndarray, target: np.ndarray) -> tuple[float, float]:
                 layer_1 = np.dot(input_vector, self.weights) + self.bias
                 layer_2 = self.sigmoid(layer_1)
                 prediction = layer_2
@@ -31,11 +31,11 @@ class NeuralNetwork:
                 derror_dweights = derror_dprediction * dprediction_dlayer1 * dlayer1_dweights
                 return derror_dbias, derror_dweights
         
-        def update_values(self, derror_dbias, derror_dweights):
+        def update_values(self, derror_dbias: float, derror_dweights: float) -> None:
                 self.bias -= derror_dbias * self.learning_rate
                 self.weights -= derror_dweights * self.learning_rate
 
-        def train(self, input_vectors, targets, iterations):
+        def train(self, input_vectors: np.ndarray, targets: np.ndarray, iterations: int) -> list[float]:
                 cumulative_errors = []
                 for i in range(iterations):
                         random_data_index = np.random.randint(len(input_vectors))

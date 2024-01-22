@@ -1,47 +1,43 @@
 import speech_recognition as sr
-import pyttsx3
 import openai
 from dotenv import load_dotenv
 import os
 import json
+from elevenlabslib import *
+import client
 
 load_dotenv()
 
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 openai.api_key = OPENAI_API_KEY
+elevenlabsApiKey = os.getenv('ELEVENLABS_API_KEY')
+recognizer = sr.Recognizer()
+mic = sr.Microphone()
+
+user = ElevenLabsUser(elevenlabsApiKey)
+
+voice = user.get_voices_by_name("Jarvis")[0]
+
 
 # TODO: Improve Speech Recognition
 
 def get_json_data():
-    with open(os.path.join("Python", 'JARVIS', "messages.json")) as f:
+    with open(os.path.join("RaspberryPi", "messages.json")) as f:
         data = json.load(f)
     return data
 
 def save_json_data(data):
-    with open(os.path.join("Python", 'JARVIS', "messages.json"), 'w') as f:
+    with open(os.path.join("RaspberryPi", "messages.json"), 'w') as f:
         json.dump(data, f, indent=4)
 
 def speak(text):
-    engine = pyttsx3.init()
-
-    # Adjust speech parameters
-    engine.setProperty('rate', 200)  
-    engine.setProperty('volume', 0.8) 
-
-    # Retrieve available voices and select one
-    voices = engine.getProperty('voices')
-    for voice in voices:
-        if "jarvis" in voice.name.lower(): 
-            engine.setProperty('voice', voice.id)
-            break
-
-    engine.say(text)
-    engine.runAndWait()
+    voice.generate_and_play_audio(text, False)
+    print(text)
 
 def listen():
-    recognizer = sr.Recognizer()
+    
     audio = None
-    with sr.Microphone() as source:
+    with mic as source:
         print("Listening...")
         recognizer.adjust_for_ambient_noise(source, duration=0.2)
         try:
@@ -86,12 +82,18 @@ def main():
             messages.append({"role": "user", "content": text})
             save_json_data({"messages": messages})
             response = send_to_chatGPT(messages)
-            for word in exit_words:
-                if word in response:
-                    speak("Goodbye")
-                    exit()
+            if "{" in response:
+                response = response.split("{")[1]
+                response = response.split("}")[0]
+                device, action, value = response.split(",")
+                device = device.split(":")[1].strip()
+                action = action.split(":")[1].strip()
+                value = value.split(":")[1].strip()
+                
             speak(response)
-            print(response)
+            for word in exit_words:
+                if word in text or word in response:
+                    exit()
 
 if __name__ == "__main__":
     main()

@@ -1,20 +1,26 @@
 import socket
 import sys
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect(('raspberrypi', 5000))
+import json
 
-
-def send(message):
+def get_device(target):
+    with open("devices.json") as f:
+        data = json.load(f)
+    for device in data["devices"]:
+        if device["name"] == target:
+            return device
+def send(s, message):
     print("Sending message: " + message)
     s.send(message.encode())
 
-def recieve():
+def recieve(s):
     data = s.recv(1024).decode()
     print("Received message: " + data)
     return data
 
-while True:
-    print(f"Connected to server")
-    recieve()
-    send(sys.argv[1])
-    
+def main(target):
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect((get_device(target)["ip"], 5000))
+    return s
+
+if __name__ == "__main__":
+    main(sys.argv[1])
