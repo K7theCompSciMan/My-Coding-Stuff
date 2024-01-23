@@ -4,8 +4,7 @@ from dotenv import load_dotenv
 import os
 import json
 from elevenlabslib import *
-import client
-
+from messenger import *
 load_dotenv()
 
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
@@ -37,26 +36,30 @@ def speak(text):
 def listen():
     
     audio = None
-    with mic as source:
-        print("Listening...")
-        recognizer.adjust_for_ambient_noise(source, duration=0.2)
+    while True:
+        with mic as source:
+            print("Listening...")
+            recognizer.adjust_for_ambient_noise(source, duration=0.2)
+            try:
+                audio = recognizer.listen(source, timeout=3) 
+            except:
+                pass
+
         try:
-            audio = recognizer.listen(source, timeout=3) 
+            print("Recognizing...")
+            statement = recognizer.recognize_google(audio).lower()
+            if "aardvark" in statement:
+                statement -= "aardvark"
+                break
+            
+        except sr.UnknownValueError:
+            speak("Sorry, I couldn't understand. Please say that again.")
+        except sr.RequestError:
+            speak("Speech recognition service is unavailable. Please try again later.")
         except:
             pass
-
-    try:
-        print("Recognizing...")
-        statement = recognizer.recognize_google(audio)
-        print(f"User said: {statement}\n")
-        return statement.lower()
-    except sr.UnknownValueError:
-        speak("Sorry, I couldn't understand. Please say that again.")
-    except sr.RequestError:
-        speak("Speech recognition service is unavailable. Please try again later.")
-    except:
-        pass
-    return ""
+    print(f"User said: {statement}\n")
+    return statement
 
 def send_to_chatGPT(messages, model="gpt-3.5-turbo"):
     response = openai.ChatCompletion.create(
@@ -89,6 +92,7 @@ def main():
                 device = device.split(":")[1].strip()
                 action = action.split(":")[1].strip()
                 value = value.split(":")[1].strip()
+                send_to_device(device, action, value)
                 
             speak(response)
             for word in exit_words:

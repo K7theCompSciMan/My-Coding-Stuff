@@ -6,6 +6,27 @@
         "configurations": [
                 {
                         "type": "java",
+                        "name": "CommaAdder",
+                        "request": "launch",
+                        "mainClass": "Practice.CommaAdder",
+                        "projectName": "K7 Coding Stuff_a7dfaec8"
+                },
+                {
+                        "type": "java",
+                        "name": "PongGame",
+                        "request": "launch",
+                        "mainClass": "Practice.PongGame",
+                        "projectName": "K7 Coding Stuff_a7dfaec8"
+                },
+                {
+                        "type": "java",
+                        "name": "GUICalculator",
+                        "request": "launch",
+                        "mainClass": "Practice.GUICalculator",
+                        "projectName": "K7 Coding Stuff_a7dfaec8"
+                },
+                {
+                        "type": "java",
                         "name": "AudioPlayer",
                         "request": "launch",
                         "mainClass": "Practice.AudioPlayer",
