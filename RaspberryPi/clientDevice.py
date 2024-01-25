@@ -10,4 +10,4 @@ def run_action(action, value):
         launch(value)
 
 
-run_action("launch", "notepad")
+run_action("launch", "brave")
