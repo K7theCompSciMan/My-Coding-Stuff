@@ -5,6 +5,7 @@ import os
 import json
 from elevenlabslib import *
 from messenger import *
+from clientDevice import *
 load_dotenv()
 
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
@@ -92,7 +93,7 @@ def main():
                 device = device.split(":")[1].strip()
                 action = action.split(":")[1].strip()
                 value = value.split(":")[1].strip()
-                send_to_device(device, action, value)
+                run_action(action, value)                
                 
             speak(response)
             for word in exit_words:

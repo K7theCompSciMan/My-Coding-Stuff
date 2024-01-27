@@ -8,6 +8,3 @@ def launch(value):
 def run_action(action, value):
     if action == "launch":
         launch(value)
-
-
-run_action("launch", "brave")
