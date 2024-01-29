@@ -4,8 +4,8 @@
 	import { goto } from '$app/navigation';
 </script>
 
-<div class="max-h-screen justify-center text-center">
-	<nav>
+<div class="max-h-screen justify-center text-center ">
+	<nav class="bg-yellow-50">
 		<Button name="Home" onclick={() => goto('/')} />
 		<Button name="Projects" onclick={() => goto('/projects')} />
 		<Button name="Resume" onclick={() => goto('/resume')} />

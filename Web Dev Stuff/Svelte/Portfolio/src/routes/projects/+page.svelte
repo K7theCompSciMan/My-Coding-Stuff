@@ -52,7 +52,7 @@
 					on:click={() => window.open(project.link, '_blank')}
 				/>
 
-				<div class="text-xl relative overflow-auto h-full" style="width: 100%">
+				<div class="text-xl relative overflow-auto h-full w-full" style="width: 100%">
 					<strong>{project.title}</strong>
 					<br />
 					<br />

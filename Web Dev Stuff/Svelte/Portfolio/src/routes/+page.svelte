@@ -1,17 +1,18 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import Heading from '$lib/Heading.svelte';
 	import src from '$lib/images/kesavan.jpeg';
 </script>
 
-<div class="text-black justify-center items-center" style="height: 92.7vh;">
+<div class="text-black justify-center items-center align-middle" style="height: 92.7vh;">
 	<Heading />
 	<br />
 
 	<img
 		{src}
 		alt="Kesavan Rangarajan"
-		class="relative rounded-2xl"
-		style="width: fit-content; height: 45%; left: 50%; transform: translateX(-50%);"
+		class="relative rounded-2xl w-fit justify-center"
+		style="height: 45%; left: 50%; transform: translateX(-50%);"
 	/>
 	<p class="text-xl relative pt-2" style="left: 20%; width: 60%">
 		<strong>
@@ -32,6 +33,9 @@
 		then quickly expanded to other languages, such as JavaScript, TypeScript, and even Svelte, which
 		is how I made this website. I love to learn about anything when it comes to computer science.
 		Whether it is quantum computing, or web development, I love to learn about it. Some of my major
-		projects are highlighted in the <strong>Projects</strong> page.
+		<!-- svelte-ignore a11y-click-events-have-key-events -->
+		<!-- svelte-ignore a11y-missing-attribute -->
+		<!-- svelte-ignore a11y-no-static-element-interactions -->
+		projects are highlighted in the <a class=" hover:cursor-pointer" on:click={() => {goto("/projects")}}><strong>Projects</strong></a> page.
 	</p>
 </div>
