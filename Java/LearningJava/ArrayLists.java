@@ -3,7 +3,7 @@ public class ArrayLists {
     public static void main(String[] args){
         //ArrayList only stores ref data and is resizeable.
 
-        ArrayList<String> food = new ArrayList<String>(); 
+        ArrayList<String> food = new ArrayList<String>();
         food.add("Pizza");
         food.add("Hamburger");
         food.add("Hotdog");
